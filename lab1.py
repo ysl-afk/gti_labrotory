@@ -25,7 +25,7 @@ def parse_local_file():
         return movies_dict
 
     except FileNotFoundError:
-        print("Файл не найден. Проверь, что он лежит в той же папке, что и скрипт.")
+        print("Файл не найден.")
         return None
 
 
