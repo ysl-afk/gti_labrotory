@@ -16,8 +16,8 @@ def get_medicine_data(medicine_name):
         with open("farmacy.html", "r", encoding="utf-8") as file:
             soup = BeautifulSoup(file, "html.parser")
         products = soup.find_all("div", class_="product")
-
         query = medicine_name.lower().strip()
+        found_item = []
 
         for item in products:
             title_el = item.find("h2", class_="title")
@@ -25,14 +25,16 @@ def get_medicine_data(medicine_name):
 
             if title_el and price_el:
                 name = title_el.get_text(strip=True)
+
                 if query in name.lower():
                     price = price_el.get_text(strip=True)
-                    return f"Результат поиска:\n {name} — {price} руб."
+                    found_item.append(f"{name} — {price} руб.")
+                    break
 
-        return f"Лекарство '{medicine_name}' не найдено в базе данных."
-
-    except FileNotFoundError:
-        return "Ошибка: Файл базы данных (pharmacy.html) не найден!"
+        if found_item:
+            result_text = "Результаты поиска:\n" + "\n".join(found_item)
+            return result_text
+        return "Ничего не найдено"
     except Exception as e:
         return f"Произошла непредвиденная ошибка: {e}"
 
