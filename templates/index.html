@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Калькулятор сложного процента</title>
+</head>
+<body>
+    <h2>Расчет дохода по сложному проценту</h2>
+
+    <form action="/calculate" method="post">
+        <p>Начальный капитал (руб.):<br>
+        <input type="text" name="principal" placeholder="Введите сумму" required></p>
+
+        <p>Годовая ставка (%):<br>
+        <input type="text" name="rate" placeholder="Введите процент" required></p>
+
+        <p>Срок инвестиций (лет):<br>
+        <input type="text" name="time" placeholder="Введите количество лет" required></p>
+
+        <input type="submit" value="Рассчитать доход">
+    </form>
+
+    <hr>
+
+    {% if result %}
+        <h3>Результат: {{ result }}</h3>
+    {% endif %}
+
+</body>
+</html>
