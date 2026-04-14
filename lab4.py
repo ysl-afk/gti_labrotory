@@ -5,7 +5,7 @@ class TestInterestCalculation(unittest.TestCase):
 
     def test_standard_calculation(self):
         result = calculate_compound_interest(10000, 10, 2)
-        self.assertEqual(result, "Через 2 года итоговая сумма составит: 12100.00 руб.")
+        self.assertEqual(result, "Через 2 лет итоговая сумма составит: 12100.00 руб.")
 
     def test_zero_time(self):
         result = calculate_compound_interest(50000, 15, 0)
